@@ -1,39 +1,78 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+## See
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+![OneLevel](https://github.com/shAdow-XJY/list_twolevel/blob/master/example/assets/twolevellist2.jpg)
+![TwoLevel](https://github.com/shAdow-XJY/list_twolevel/blob/master/example/assets/twolevellist1.jpg)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+## use
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+#### oneLevelList
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```
+List<Map<String, String>> oneLevelObj = [
+    {'title': 'Vue', 'image': 'assets/Vue.png'},
+    {'title': 'Web', 'image': 'assets/Web.png'},
+    {'title': 'Flutter', 'image': 'assets/Flutter.png'},
+    {'title': 'UnrealEngine', 'image': 'assets/UnrealEngine.png'}
+  ];
+ListBuilder(
+          oneLevel: true,
+          levelObj: oneLevelObj,
+          backgroundColor: const Color(0xFF2E2E48),
+          onPressed: (selectedCategory) {
+            if (selectedCategory != 'default') {
+              debugPrint('click $selectedCategory ');
+            }
+          },
+        )
 ```
 
-## Additional information
+---
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+#### twoLevelList
+
+```
+List<Map<String, String>> twoLevelObj = [
+    {'title': 'Vue'},
+    {'title': 'Web'},
+    {'title': 'Flutter'},
+    {'title': 'UnrealEngine'}
+  ];
+ListBuilder(
+          oneLevel: false,
+          levelObj: twoLevelObj,
+          backgroundColor: const Color(0xFF2E2E48),
+          onPressed: (selectedTitle) {
+            if (selectedTitle!= 'default') {
+              debugPrint('click $selectedTitle');
+            }
+          },
+        )
+```
+
+## Function creator
+
+```
+class ListBuilder extends StatefulWidget {
+  bool oneLevel;
+  List<Map<String, String>> levelObj;
+  Function(String selectedTitle)? onPressed;   // return title String what you click
+  double? itemHeight;
+  Color? backgroundColor;
+  TextStyle? textStyle;
+  EdgeInsetsGeometry? listPadding;
+  EdgeInsetsGeometry? itemMargin;
+  MainAxisAlignment itemAlignment;            //
+  }
+```
+
+## Link
+
+### use in my blog
+
+click to see:[shAdowPlusing](https://shadowplusing.website/#/)
+
+### code source
+
+Github:[shAdow-XJY/list_twolevel: a two level list builder --- flutter component. (github.com)](https://github.com/shAdow-XJY/list_twolevel)
+
+Gitee:[list_twolevel: a two level list builder --- flutter component. (gitee.com)](https://gitee.com/shAdowPlusing/list_twolevel)
