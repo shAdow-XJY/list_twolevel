@@ -61,11 +61,15 @@ class ListBuilder extends StatefulWidget {
   TextStyle? textStyle;
   EdgeInsetsGeometry? listPadding;
   EdgeInsetsGeometry? itemMargin;
-  MainAxisAlignment itemAlignment;            //
+  TextAlign? itemAlignment;           //
   }
 ```
 
 ## Link
+
+### pub link
+
+[https://pub.dev/packages/list_twolevel](https://pub.dev/packages/list_twolevel)
 
 ### use in my blog
 

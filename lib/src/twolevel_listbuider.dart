@@ -9,7 +9,7 @@ class ListBuilder extends StatefulWidget {
   TextStyle? textStyle;
   EdgeInsetsGeometry? listPadding;
   EdgeInsetsGeometry? itemMargin;
-  MainAxisAlignment itemAlignment;
+  TextAlign? itemAlignment;
   ListBuilder({
     Key? key,
     required this.oneLevel,
@@ -20,7 +20,7 @@ class ListBuilder extends StatefulWidget {
     this.textStyle,
     this.listPadding,
     this.itemMargin,
-    this.itemAlignment = MainAxisAlignment.center,
+    this.itemAlignment,
   }) : super(key: key);
 
   @override
@@ -46,46 +46,46 @@ class _ListBuilderState extends State<ListBuilder> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        widget.levelObj[index]['image'] == null
-                            ? const SizedBox(
-                                height: 80,
-                              )
-                            : SizedBox(
-                                height: 80,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(50),
-                                    child: Image.asset(widget.levelObj[index]
-                                            ['image'] ??
-                                        'assets/default.png'),
-                                  ),
-                                ),
-                              ),
-                        InkWell(
-                          child: Text(
-                            widget.levelObj[index]['title'] ?? 'default',
-                            style: widget.textStyle ??
-                                TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.w900,
-                                    shadows: [
-                                      BoxShadow(
-                                          blurRadius: 5,
-                                          color:
-                                              Colors.white.withOpacity(0.54)),
-                                    ]),
-                          ),
-                          onTap: () {
-                            widget.onPressed!(
-                                widget.levelObj[index]['title'] ?? 'default');
-                          },
-                        )
-                      ],
+                    widget.levelObj[index]['image'] == null
+                        ? const SizedBox(
+                      height: 80,
+                    )
+                        : SizedBox(
+                      height: 80,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(widget.levelObj[index]
+                          ['image'] ??
+                              'assets/default.png'),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        child: Text(
+                          widget.levelObj[index]['title'] ?? 'default',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: widget.itemAlignment??TextAlign.start,
+                          style: widget.textStyle ??
+                              TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w900,
+                                  shadows: [
+                                    BoxShadow(
+                                        blurRadius: 5,
+                                        color:
+                                        Colors.white.withOpacity(0.54)),
+                                  ]),
+                        ),
+                        onTap: () {
+                          widget.onPressed!(
+                              widget.levelObj[index]['title'] ?? 'default');
+                        },
+                      ),
                     ),
                     IconButton(
                       icon: const Icon(Icons.keyboard_arrow_right),
@@ -101,27 +101,34 @@ class _ListBuilderState extends State<ListBuilder> {
                   ],
                 )
               : Row(
-                  mainAxisAlignment: widget.itemAlignment,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    InkWell(
-                      child: Text(
-                        widget.levelObj[index]['title'] ?? 'default',
-                        style: widget.textStyle ??
-                            TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900,
-                                shadows: [
-                                  BoxShadow(
-                                      blurRadius: 5,
-                                      color: Colors.white.withOpacity(0.54)),
-                                ]),
+                    const SizedBox(width: 40,),
+                    Expanded(
+                      child: InkWell(
+                        child: Text(
+                          widget.levelObj[index]['title'] ?? 'default',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: widget.itemAlignment??TextAlign.center,
+                          style: widget.textStyle ??
+                              TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w900,
+                                  shadows: [
+                                    BoxShadow(
+                                        blurRadius: 5,
+                                        color: Colors.white.withOpacity(0.54)),
+                                  ]),
+                        ),
+                        onTap: () {
+                          widget.onPressed!(
+                              widget.levelObj[index]['title'] ?? 'default');
+                        },
                       ),
-                      onTap: () {
-                        widget.onPressed!(
-                            widget.levelObj[index]['title'] ?? 'default');
-                      },
                     ),
+                    const SizedBox(width: 40,),
                   ],
                 )),
     );

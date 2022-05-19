@@ -1,6 +1,6 @@
 name: list_twolevel
 description: A simple two level listbuilder fill with Map<> Obj.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/shAdow-XJY/list_twolevel
 
 environment:

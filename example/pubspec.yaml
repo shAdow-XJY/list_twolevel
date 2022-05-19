@@ -1,4 +1,4 @@
-name: list_twolevel
+name: list_twolevel_demo
 description: A simple two level listbuilder fill with Map<> Obj.
 version: 1.0.0+1
 homepage: https://github.com/shAdow-XJY/list_twolevel
@@ -10,12 +10,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  list_twolevel: ^0.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  list_twolevel:
-    path: ../
 
   flutter_lints: ^1.0.0
 
