@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * solve text overflow
+
+## 0.0.3
+
+* separate into two type list builders, easy to use.

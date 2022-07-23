@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:list_twolevel/list_twolevel.dart';
-
+import 'package:list_twolevel/list_A.dart';
+import 'package:list_twolevel/list_B.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -25,58 +25,66 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Map<String, String>> oneLevelObj = [
+
+  bool click = true;
+
+  List<Map<String, String>> listALevelObj = [
     {'title': 'Vue', 'image': 'assets/Vue.png'},
     {'title': 'Web', 'image': 'assets/Web.png'},
     {'title': 'Flutter', 'image': 'assets/Flutter.png'},
     {'title': 'UnrealEngine', 'image': 'assets/UnrealEngine.png'}
   ];
-  List<Map<String, String>> twoLevelObj = [];
+  listA (){
+    return AListBuilder(
+      levelObj: listALevelObj,
+      backgroundColor: const Color(0xFF2E2E48),
+      onPressed: (selectedCategory) {
+        debugPrint('click $selectedCategory ');
+        setState(() {
+          click = !click;
+        });
+      },
+    );
+  }
 
-  bool _oneLevel = true;
-
-  void twoLevelInit(String oneLevelTitle) {
-    twoLevelObj.clear();
-    for(var i = 0; i < 5; i++){
-      twoLevelObj.add({
-        'title': oneLevelTitle+'$i'+oneLevelTitle+'$i'+oneLevelTitle+'$i'+oneLevelTitle+'$i',
-      });
-    }
+  List<Map<String, String>> listBLevelObj = [
+    {'title':'title1'},
+    {'title':'title2'},
+    {'title':'title3'},
+    {'title':'title4'},
+    {'title':'title5'},
+    {'title':'title6'},
+    {'title':'title7'},
+    {'title':'title8'},
+    {'title':'title9'},
+    {'title':'title10'},
+    {'title':'title11'},
+    {'title':'title12'},
+    {'title':'title13'},
+    {'title':'title14'},
+    {'title':'title15'},
+  ];
+  listB (){
+    return BListBuilder(
+      levelObj: listBLevelObj,
+      itemHeight: 50,
+      backgroundColor: const Color(0xFF2E2E48),
+      onPressed: (selectedTitle) {
+        debugPrint('click $selectedTitle ');
+        setState(() {
+          click = !click;
+        });
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF464667),
-        body: _oneLevel
-            ? ListBuilder(
-          oneLevel: _oneLevel,
-          levelObj: oneLevelObj,
-          backgroundColor: const Color(0xFF2E2E48),
-          onPressed: (selectedCategory) {
-            if (selectedCategory != 'default') {
-              debugPrint('click $selectedCategory ');
-              twoLevelInit(selectedCategory);
-              setState(() {
-                _oneLevel = false;
-              });
-            }
-          },
-        )
-            :ListBuilder(
-          oneLevel: _oneLevel,
-          levelObj: twoLevelObj,
-          itemHeight: 50,
-          backgroundColor: const Color(0xFF2E2E48),
-          onPressed: (selectedTitle) {
-            if (selectedTitle != 'default') {
-              debugPrint('click $selectedTitle ');
-              setState(() {
-                _oneLevel = true;
-              });
-            }
-          },
-        )
+        body: click
+            ? listA()
+            : listB()
     );
   }
 }

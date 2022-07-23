@@ -10,13 +10,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-  list_twolevel: ^0.0.2
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  list_twolevel:
+    path: ../
 
 flutter:
 

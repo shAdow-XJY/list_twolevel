@@ -1,69 +1,56 @@
-## See
-
-![OneLevel](https://github.com/shAdow-XJY/list_twolevel/blob/master/example/assets/twolevellist2.jpg)
-![TwoLevel](https://github.com/shAdow-XJY/list_twolevel/blob/master/example/assets/twolevellist1.jpg)
-
 ## use
 
-#### oneLevelList
+#### AListBuilder
 
 ```
-List<Map<String, String>> oneLevelObj = [
+  List<Map<String, String>> listALevelObj = [
     {'title': 'Vue', 'image': 'assets/Vue.png'},
     {'title': 'Web', 'image': 'assets/Web.png'},
     {'title': 'Flutter', 'image': 'assets/Flutter.png'},
     {'title': 'UnrealEngine', 'image': 'assets/UnrealEngine.png'}
   ];
-ListBuilder(
-          oneLevel: true,
-          levelObj: oneLevelObj,
-          backgroundColor: const Color(0xFF2E2E48),
-          onPressed: (selectedCategory) {
-            if (selectedCategory != 'default') {
-              debugPrint('click $selectedCategory ');
-            }
-          },
-        )
+  listA (){
+    return AListBuilder(
+      levelObj: listALevelObj,
+      backgroundColor: const Color(0xFF2E2E48),
+      onPressed: (selectedCategory) {
+        debugPrint('click $selectedCategory ');
+        setState(() {
+          
+        });
+      },
+    );
+  }
 ```
+![OneLevel](https://github.com/shAdow-XJY/list_twolevel/blob/master/example/assets/twolevellist2.jpg)
 
 ---
 
-#### twoLevelList
+#### BListBuilder
 
 ```
-List<Map<String, String>> twoLevelObj = [
-    {'title': 'Vue'},
-    {'title': 'Web'},
-    {'title': 'Flutter'},
-    {'title': 'UnrealEngine'}
+List<Map<String, String>> listBLevelObj = [
+    {'title':'title1'},
+    {'title':'title2'},
+    {'title':'title3'},
+    {'title':'title4'},
+    {'title':'title5'},
   ];
-ListBuilder(
-          oneLevel: false,
-          levelObj: twoLevelObj,
-          backgroundColor: const Color(0xFF2E2E48),
-          onPressed: (selectedTitle) {
-            if (selectedTitle!= 'default') {
-              debugPrint('click $selectedTitle');
-            }
-          },
-        )
-```
-
-## Function creator
-
-```
-class ListBuilder extends StatefulWidget {
-  bool oneLevel;
-  List<Map<String, String>> levelObj;
-  Function(String selectedTitle)? onPressed;   // return title String what you click
-  double? itemHeight;
-  Color? backgroundColor;
-  TextStyle? textStyle;
-  EdgeInsetsGeometry? listPadding;
-  EdgeInsetsGeometry? itemMargin;
-  TextAlign? itemAlignment;           //
+  listB (){
+    return BListBuilder(
+      levelObj: listBLevelObj,
+      itemHeight: 50,
+      backgroundColor: const Color(0xFF2E2E48),
+      onPressed: (selectedTitle) {
+        debugPrint('click $selectedTitle ');
+        setState(() {
+          
+        });
+      },
+    );
   }
 ```
+![TwoLevel](https://github.com/shAdow-XJY/list_twolevel/blob/master/example/assets/twolevellist1.jpg)
 
 ## Link
 
